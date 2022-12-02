@@ -1,4 +1,4 @@
-# gwhaplo - Tools for genome-wide haplotype characterisation with R^2^
+# gwhaplo - Tools for genome-wide haplotype characterisation with $R^{2}$
 
 *Work in progress*
 
@@ -7,7 +7,7 @@
 ## LDplot
 
 ### Description 
-A wrapper for the LDheatmap function (Shin et al. 2006) where R^2^ is calculated on each chromosome and plotted as a heatmap.  
+A wrapper for the LDheatmap function (Shin et al. 2006) where $R^{2}$ is calculated on each chromosome and plotted as a heatmap.  
 
 ### Usage 
 
