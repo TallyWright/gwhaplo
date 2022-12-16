@@ -9,7 +9,8 @@ map.clean<-function(map, geno, blast, r2.thresh = 0.7){
     guides <- colnames(cor.matrix)[cor.matrix[1,] > r2.thresh]
     
     #if guides are found...
-    if(length(guides) > 0){
+    #ignore guides of length 1 (no way of knowing which are correct)
+    if(length(guides) > 1){
       #pull chromosomes of guides
       guides <- sapply(guides, function(y){ 
         map[,2][which(map[,1] == y)] })
