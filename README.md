@@ -23,22 +23,24 @@ A wrapper for the LDheatmap function (Shin et al. 2006) where $R^{2}$ is calcula
 
 `save.png` If `F` plots will be plotted within R, if `T` they will be saved individually as png files. 
 
-## map.clean
+ 
+
+## HAPselect
+
 
 ### Description 
 
-A method for improving chromosome positioning for physical anchoring of markers using $R^{2}$. $R^{2}$ is calculated for each mapped marker vs. all other markers. All markers above a defined $R^{2}$ threshold are found and the most common chromosome of the markers in that bin is taken. If this chromosome is different to the one currently in the map, blast hits are used to re-position the marker to the new chromosome, if at least one blast hit is present for that chromosome. If multiple BLAST hits are available for the new chromosome, the BLAST hit closest to whichever marker in the bin with the highest $R^{2}$ to the target marker is taken as the position. If all markers used as guides are found on different chromosomes, the chromosome of the marker with the highest $R^{2}$ to the target marker is used as the guide.   
+A haplotype selection algorithm that works by adding individuals into a core selection. The selection starts with a user specified individual and further individuals are added to the selection that offer the most unique haplotypes. The selection stops when the desired core individual number is reached or all haplotypes are captured already. 
+
 
 ### Usage 
 
-`map.clean(map, geno, blast, r2.thresh = 0.7)`
+`HAPselect(data,sampling.no,starting.genotype)`
 
 ### Arguments
 
-`map`  A physical map to be improved, stored in a dataframe with three columns in the following order: marker names, chromosome and position.
+`data` a haplotype matrix with block(haplotype) name in column headers and individual name in row names. Not tested with missing data present. 
 
-`geno` Numeric SNP dataframe with marker names as column headers and genotype names as row names. 
+`sampling.no` specify the number of individuals to take in the selection
 
-`blast` blast hits for a marker probe, stored in a dataframe with three columns: marker names, chromosome and position. Multiple hits are expected for each marker, typically generated using BLAST+.
-
-`r2.thresh` the cut off for defining the bin of correlated markers to use as a guide. The default is 0.7.   
+`starting.genotype` specify starting genotype (should match row name). 
